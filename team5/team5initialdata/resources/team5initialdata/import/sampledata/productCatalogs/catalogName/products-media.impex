@@ -1,0 +1,47 @@
+# -----------------------------------------------------------------------
+# Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
+# -----------------------------------------------------------------------
+# ImPex for Importing Product Media
+
+# Macros / Replacement Parameter definitions
+$productCatalog=__PRODUCT_CATALOG_NAME__
+
+$catalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog]
+$media=@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator]
+$thumbnail=thumbnail(code, $catalogVersion)
+$picture=picture(code, $catalogVersion)
+$thumbnails=thumbnails(code, $catalogVersion)
+$detail=detail(code, $catalogVersion)
+$normal=normal(code, $catalogVersion)
+$others=others(code, $catalogVersion)
+$data_sheet=data_sheet(code, $catalogVersion)
+$medias=medias(code, $catalogVersion)
+$galleryImages=galleryImages(qualifier, $catalogVersion)
+$siteResource=jar:de.hybris.team5.initialdata.setup.InitialDataSystemSetup&/team5initialdata/import/productCatalogs/$productCatalog
+
+# Create Media
+INSERT_UPDATE Media;mediaFormat(qualifier);code[unique=true];$media;mime[default='image/jpeg'];$catalogVersion;folder(qualifier)
+
+# Create Media Containers
+INSERT_UPDATE MediaContainer;qualifier[unique=true];$medias;$catalogVersion
+
+# Update Products with Media and Media Containers
+UPDATE Product;code[unique=true];$picture;$thumbnail;$detail;$others;$normal;$thumbnails;$galleryImages;$catalogVersion
+;1200Wx1200H;/1200Wx1200H/3881339-1531.jpg;$siteResource/images/1200Wx1200H/3881339-1531.jpg
+;300Wx300H;/300Wx300H/3881339-1531.jpg;$siteResource/images/300Wx300H/3881339-1531.jpg
+;96Wx96H;/96Wx96H/3881339-1531.jpg;$siteResource/images/96Wx96H/3881339-1531.jpg
+;1200Wx1200H;/1200Wx1200H/3881014-8602.jpg;$siteResource/images/1200Wx1200H/3881014-8602.jpg
+;300Wx300H;/300Wx300H/3881014-8602.jpg;$siteResource/images/300Wx300H/3881014-8602.jpg
+;96Wx96H;/96Wx96H/3881014-8602.jpg;$siteResource/images/96Wx96H/3881014-8602.jpg
+;1200Wx1200H;/1200Wx1200H/3881027-9735.jpg;$siteResource/images/1200Wx1200H/3881027-9735.jpg
+;300Wx300H;/300Wx300H/3881027-9735.jpg;$siteResource/images/300Wx300H/3881027-9735.jpg
+;96Wx96H;/96Wx96H/3881027-9735.jpg;$siteResource/images/96Wx96H/3881027-9735.jpg
+;1200Wx1200H;/1200Wx1200H/3881028-5896.jpg;$siteResource/images/1200Wx1200H/3881028-5896.jpg
+;300Wx300H;/300Wx300H/3881028-5896.jpg;$siteResource/images/300Wx300H/3881028-5896.jpg
+;96Wx96H;/96Wx96H/3881028-5896.jpg;$siteResource/images/96Wx96H/3881028-5896.jpg
+;1200Wx1200H;/1200Wx1200H/3881076-4421.jpg;$siteResource/images/1200Wx1200H/3881076-4421.jpg
+;300Wx300H;/300Wx300H/3881076-4421.jpg;$siteResource/images/300Wx300H/3881076-4421.jpg
+;96Wx96H;/96Wx96H/3881076-4421.jpg;$siteResource/images/96Wx96H/3881076-4421.jpg
+;1200Wx1200H;/1200Wx1200H/3881074-7355.jpg;$siteResource/images/1200Wx1200H/3881074-7355.jpg
+;300Wx300H;/300Wx300H/3881074-7355.jpg;$siteResource/images/300Wx300H/3881074-7355.jpg
+;96Wx96H;/96Wx96H/3881074-7355.jpg;$siteResource/images/96Wx96H/3881074-7355.jpg

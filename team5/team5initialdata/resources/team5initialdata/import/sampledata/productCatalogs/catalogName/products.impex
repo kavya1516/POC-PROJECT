@@ -1,0 +1,33 @@
+# -----------------------------------------------------------------------
+# Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
+# -----------------------------------------------------------------------
+# ImpEx for Importing Products
+
+# Macros / Replacement Parameter definitions
+$productCatalog=teslaProductCatalog
+$productCatalogName=teslaProductCatalog
+
+$catalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
+$supercategories=supercategories(code, $catalogVersion)
+$baseProduct=baseProduct(code,$catalogVersion)
+$approved=approvalstatus(code)[default='approved']
+
+# Language
+$lang=en
+
+# Insert Products
+#INSERT_UPDATE Product;code[unique=true];$supercategories;manufacturerName;manufacturerAID;unit(code);ean;variantType(code);$catalogVersion;$approved
+UPDATE Product                     ; code[unique=true] ; name[lang=$lang]                                     ; description[lang=$lang]                              ; summary 											   ; $approved             ; $catalogVersion
+                                   ; 3881014          ; Model Y All-Weather Interior Liners      ; Model Y All-Weather Interior Liners are made from a thermoplastic elastomer material with a strong rigid core for extreme-duty protection and spatial coverage.
+      ; Model Y All-Weather Interior Liners     ; approved
+                                   ; 3881014          ; Model Y All-Weather Front Trunk Liner      ; Model Y All-Weather Front Trunk Liner is made from a thermoplastic elastomer material with a strong rigid core for extreme-duty protection and spatial coverage. Unlike traditional floor mats, Model Y All-Weather Front Trunk Liner is comprised of vertical walls that offer maximum protection to the front trunk and easy cleanup.
+      ; Model Y All-Weather Front Trunk Liner     ; approved
+								   ; 3881027          ; Model Y Rear Liftgate Sunshade      ; Constructed of lightweight mesh fabric with a collapsible rigid frame, the Model Y Rear Liftgate Sunshade blocks 66% of luminous transmittance without compromising rearward visibility. Easily removable, the sunshade is installed onto the interior of the rear hatch window. When removed, the shade collapses and stores in a 16-inch diameter pouch.
+      ; Model Y Rear Liftgate Sunshade     ; approved
+                                   ; 3881028          ; Model Y Illuminated Door Sills      ; Add a premium touch to your Tesla by accentuating your vehicle’s model name with Model Y Illuminated Door Sills. This elegant addition requires no additional wiring to your vehicle’s electrical system. Each sill is activated by a magnetic switch and powered by a long-lasting battery with LEDs for seamless installation.
+      ; Model Y Illuminated Door Sills     ; approved
+                                   ; 3881076          ; Model Y Trunk Storage Bins      ; Model Y Trunk Storage Bins help keep your trunk organized and clean. The waterproof rubber bins slip into the left and right trunk cavities allowing you to stow shoes, tools, gear and other items that might otherwise dirty your trunk's interior. The matching carpeted lids blend seamlessly into the trunk for expanded floor space and cargo area.
+      ; Model Y Trunk Storage Bins     ; approved
+                                   ; 3881074          ; Model Y Roof Rack      ; The Model Y Roof Rack was designed and engineered from the ground up for maximum aerodynamic efficiency, minimal interior noise and impact to range. The ultra-sleek attachment mechanism makes for easy installation at home while blending in seamlessly.
+      ; Model Y Roof Rack     ; approved
+
