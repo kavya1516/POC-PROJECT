@@ -1,0 +1,176 @@
+# -----------------------------------------------------------------------
+# Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
+# -----------------------------------------------------------------------
+# ImpEx for Importing CMS Content
+# English Localisation
+
+# Macros / Replacement Parameter definitions
+$contentCatalog=__CONTENT_CATALOG_NAME__
+
+$contentCV=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]),CatalogVersion.version[default=Staged])[default=$contentCatalog:Staged]
+$picture=media(code, $contentCV);
+$siteResource=jar:de.hybris.team5.initialdata.setup.InitialDataSystemSetup&/team5initialdata/import/contentCatalogs/$contentCatalog
+
+# Language
+$lang=en
+
+# Site Logo Component
+UPDATE SimpleBannerComponent;$contentCV[unique=true];uid[unique=true];$picture[lang=$lang]
+;;SiteLogoComponent;/images/theme/logo_hybris_b2b_responsive.svg
+
+# CMS Link Components
+UPDATE CMSLinkComponent;$contentCV[unique=true];uid[unique=true];linkName[lang=$lang]
+;;AngleGrindersCategoryLink;"Tesla Model S"
+ ;;MeasuringLayoutToolsCategoryLink;"Tesla Model 3+"
+ ;;PowerDrillsCategoryLink;"Tesla Model 3"
+ ;;SandersCategoryLink;"Tesla Model X"
+ ;;ScrewdriversCategoryLink;"Tesla Model Y"
+
+# Lightbox Banner for Mini Cart (banner is not localizable so we must create a separate banner per language)
+INSERT_UPDATE Media;$contentCV[unique=true];code[unique=true];@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator];mime[default='image/jpeg'];&imageRef;folder(qualifier)[default='images'];altText
+
+UPDATE SimpleBannerComponent;$contentCV[unique=true];uid[unique=true];$picture[lang=$lang]
+
+# CMS Mini Cart Component
+UPDATE MiniCartComponent;$contentCV[unique=true];uid[unique=true];name;title[lang=$lang]
+
+# CMS Tab Paragraph Components
+UPDATE CMSTabParagraphComponent;$contentCV[unique=true];uid[unique=true];title[lang=$lang];content[lang=$lang]
+
+# CMS Footer Component
+UPDATE FooterComponent;$contentCV[unique=true];uid[unique=true];notice[lang=$lang]
+
+# CMS Paragraph Components
+UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];content[lang=$lang]
+
+# CMS Product References Components
+UPDATE ProductReferencesComponent;$contentCV[unique=true];uid[unique=true];title[lang=$lang]
+
+# CMS PurchasedCategorySuggestionComponent Components
+UPDATE PurchasedCategorySuggestionComponent;$contentCV[unique=true];uid[unique=true];title[lang=$lang]
+
+# CMS CartSuggestion Components
+UPDATE CartSuggestionComponent;$contentCV[unique=true];uid[unique=true];title[lang=$lang]
+
+# Category Pages
+UPDATE CategoryPage;$contentCV[unique=true];uid[unique=true];title[lang=$lang]
+
+# CMS Navigation Nodes
+UPDATE CMSNavigationNode;$contentCV[unique=true];uid[unique=true];title[lang=$lang]
+ ;;AngleGrindersNavNode;"Tesla Model S"
+ ;;MeasuringLayoutToolsNavNode;"Tesla Model 3+"
+ ;;PowerDrillsNavNode;"Tesla Model 3"
+ ;;SandersNavNode;"Tesla Model X"
+ ;;ScrewdriversNavNode;"Tesla Model Y"
+ 
+
+# FAQ Page
+
+# CMS Paragraph Component (Contact information)
+UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];content[lang=en];
+
+
+# Terms and Conditions Page
+
+# CMS Paragraph Component (Contact information)
+UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];content[lang=en];
+
+
+# Homepage
+
+# Media Content
+INSERT_UPDATE Media;$contentCV[unique=true];code[unique=true];@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator];mime[default='image/jpeg'];&imageRef;folder(qualifier)[default='images'];altText
+;1200Wx1200H;/1200Wx1200H/693923-4863.jpg;$siteResource/images/1200Wx1200H/693923-4863.jpg
+;300Wx300H;/300Wx300H/693923-4863.jpg;$siteResource/images/300Wx300H/693923-4863.jpg
+;96Wx96H;/96Wx96H/693923-4863.jpg;$siteResource/images/96Wx96H/693923-4863.jpg
+;1200Wx1200H;/1200Wx1200H/1128762-6838.jpg;$siteResource/images/1200Wx1200H/1128762-6838.jpg
+;300Wx300H;/300Wx300H/1128762-6838.jpg;$siteResource/images/300Wx300H/1128762-6838.jpg
+;96Wx96H;/96Wx96H/1128762-6838.jpg;$siteResource/images/96Wx96H/1128762-6838.jpg
+;1200Wx1200H;/1200Wx1200H/2221933-6440.jpg;$siteResource/images/1200Wx1200H/2221933-6440.jpg
+;300Wx300H;/300Wx300H/2221933-6440.jpg;$siteResource/images/300Wx300H/2221933-6440.jpg
+;96Wx96H;/96Wx96H/2221933-6440.jpg;$siteResource/images/96Wx96H/2221933-6440.jpg
+;1200Wx1200H;/1200Wx1200H/2222485-3114.jpg;$siteResource/images/1200Wx1200H/2222485-3114.jpg
+;300Wx300H;/300Wx300H/2222485-3114.jpg;$siteResource/images/300Wx300H/2222485-3114.jpg
+;96Wx96H;/96Wx96H/2222485-3114.jpg;$siteResource/images/96Wx96H/2222485-3114.jpg
+;1200Wx1200H;/1200Wx1200H/2217258-6696.jpg;$siteResource/images/1200Wx1200H/2217258-6696.jpg
+;300Wx300H;/300Wx300H/2217258-6696.jpg;$siteResource/images/300Wx300H/2217258-6696.jpg
+;96Wx96H;/96Wx96H/2217258-6696.jpg;$siteResource/images/96Wx96H/2217258-6696.jpg
+;1200Wx1200H;/1200Wx1200H/637227-6683.jpg;$siteResource/images/1200Wx1200H/637227-6683.jpg
+;300Wx300H;/300Wx300H/4567186-167.jpg;$siteResource/images/300Wx300H/4567186-167.jpg
+;96Wx96H;/96Wx96H/1128763-2470.jpg;$siteResource/images/96Wx96H/1128763-2470.jpg
+;1200Wx1200H;/1200Wx1200H/3755219-3067.jpg;$siteResource/images/1200Wx1200H/3755219-3067.jpg
+;300Wx300H;/300Wx300H/3755219-3067.jpg;$siteResource/images/300Wx300H/3755219-3067.jpg
+;96Wx96H;/96Wx96H/3755219-3067.jpg;$siteResource/images/96Wx96H/3755219-3067.jpg
+;1200Wx1200H;/1200Wx1200H/2116279-5514.jpg;$siteResource/images/1200Wx1200H/2116279-5514.jpg
+;300Wx300H;/300Wx300H/2116279-5514.jpg;$siteResource/images/300Wx300H/2116279-5514.jpg
+;96Wx96H;/96Wx96H/2116279-5514.jpg;$siteResource/images/96Wx96H/2116279-5514.jpg
+;1200Wx1200H;/1200Wx1200H/3092788-7492.jpg;$siteResource/images/1200Wx1200H/3092788-7492.jpg
+;300Wx300H;/300Wx300H/3092788-7492.jpg;$siteResource/images/300Wx300H/3092788-7492.jpg
+;96Wx96H;/96Wx96H/3092788-7492.jpg;$siteResource/images/96Wx96H/3092788-7492.jpg
+;1200Wx1200H;/1200Wx1200H/3592865-815.jpg;$siteResource/images/1200Wx1200H/3592865-815.jpg
+;300Wx300H;/300Wx300H/3592865-815.jpg;$siteResource/images/300Wx300H/3592865-815.jpg
+;96Wx96H;/96Wx96H/3592865-815.jpg;$siteResource/images/96Wx96H/3592865-815.jpg
+;1200Wx1200H;/1200Wx1200H/3755204-7425.jpg;$siteResource/images/1200Wx1200H/3755204-7425.jpg
+;300Wx300H;/300Wx300H/3755204-7425.jpg;$siteResource/images/300Wx300H/3755204-7425.jpg
+;96Wx96H;/96Wx96H/3755204-7425.jpg;$siteResource/images/96Wx96H/3755204-7425.jpg
+;1200Wx1200H;/1200Wx1200H/3881018-4748.jpg;$siteResource/images/1200Wx1200H/3881018-4748.jpg
+;300Wx300H;/300Wx300H/3881018-4748.jpg;$siteResource/images/300Wx300H/3881018-4748.jpg
+;96Wx96H;/96Wx96H/3881018-4748.jpg;$siteResource/images/96Wx96H/3881018-4748.jpg
+
+
+
+INSERT_UPDATE MediaContainer;qualifier[unique=true];$medias;$contentCV[unique=true]
+;powertools-homepage-24/7service-en;Powertools_350x280_24Service_EN_01_350W.jpg,Powertools_240x200_24Service_EN_01_240W.jpg,Powertools_160x139_24Service_EN_01_160W.jpg,Powertools_385x280_24Service_EN_01_385W.jpg
+;powertools-homepage-25%-deal-en;Powertools_350x280_25Deal_EN_01_350W.jpg,Powertools_240x200_25Deal_EN_01_240W.jpg,Powertools_160x139_25Deal_EN_01_160W.jpg,Powertools_385x280_25Deal_EN_01_385W.jpg
+;powertools-homepage-30Day-en;Powertools_350x280_30Day_EN_01_350W.jpg,Powertools_240x200_30Day_EN_01_240W.jpg,Powertools_160x139_30Day_EN_01_160W.jpg,Powertools_385x280_30Day_EN_01_385W.jpg
+;powertools-homepage-6pm-en;Powertools_350x280_6pm_EN_01_350W.jpg,Powertools_240x200_6pm_EN_01_240W.jpg,Powertools_160x139_6pm_EN_01_160W.jpg,Powertools_385x280_6pm_EN_01_385W.jpg
+
+
+INSERT_UPDATE SimpleResponsiveBannerComponent;$contentCV[unique=true];uid[unique=true];$mediaContainer
+;;PowertoolsHompage24/7BannerComponent;powertools-homepage-24/7service-en
+;;PowertoolsHompage25%BannerComponent;powertools-homepage-25%-deal-en
+;;PowertoolsHompage30dayBannerComponent;powertools-homepage-30Day-en
+;;PowertoolsHompage6pmBannerComponent;powertools-homepage-6pm-en
+
+
+# CMS Banner Components
+UPDATE Media;$contentCV[unique=true];code[unique=true];@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator];mime[default='image/jpeg'];altText;&imageRef
+;widescreen;Powertools_1400x480_BigSplash_EN_01_1400W.jpg;$siteResource/images/banners/homepage/responsive/Powertools_1400x480_BigSplash_EN_01_1400W.jpg;Powertools_1400x480_BigSplash_EN_01_1400W.jpg;"Innovative And Powerfull";
+;widescreen;Powertools_1400x70_Brands_EN_01_1400W.jpg;$siteResource/images/banners/homepage/responsive/Powertools_1400x70_Brands_EN_01_1400W.jpg;Powertools_1400x70_Brands_EN_01_1400W.jpg;" Model 3 |  Model Y | Model  X  | Model S";
+
+UPDATE SimpleBannerComponent;$contentCV[unique=true];uid[unique=true];$picture[lang=$lang]
+
+UPDATE BannerComponent;$contentCV[unique=true];uid[unique=true];headline[lang=$lang];$picture[lang=$lang];content[lang=$lang]
+
+UPDATE ProductCarouselComponent;$contentCV[unique=true];uid[unique=true];title[lang=$lang]
+
+
+# Camera Accessories and Supplies Category Landing Page
+
+UPDATE CategoryPage;$contentCV[unique=true];uid[unique=true];title[lang=$lang]
+
+INSERT_UPDATE Media;$contentCV[unique=true];code[unique=true];@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator];mime[default='image/jpeg'];folder(qualifier)[default='images'];altText
+
+UPDATE CategoryFeatureComponent;$contentCV[unique=true];uid[unique=true];title[lang=$lang];$picture[lang=$lang];description[lang=$lang]
+
+UPDATE SimpleBannerComponent;$contentCV[unique=true];uid[unique=true];$picture[lang=$lang]
+
+# Search Results Page
+
+# Media Content
+INSERT_UPDATE Media;$contentCV[unique=true];code[unique=true];@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator];mime[default='image/jpeg'];folder(qualifier)[default='images'];altText
+
+UPDATE SimpleBannerComponent;$contentCV[unique=true];uid[unique=true];$picture[lang=$lang]
+
+UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];content[lang=$lang]
+
+# Cart Page
+
+# Media Content
+INSERT_UPDATE Media;$contentCV[unique=true];code[unique=true];@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator];mime[default='image/jpeg'];folder(qualifier)[default='images'];altText
+
+UPDATE SimpleBannerComponent;$contentCV[unique=true];uid[unique=true];$picture[lang=$lang]
+
+UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];content[lang=$lang]
+
+
