@@ -1,0 +1,319 @@
+# -----------------------------------------------------------------------
+# Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
+# -----------------------------------------------------------------------
+# ImpEx for Importing CMS Content
+# English Localisation
+
+# Macros / Replacement Parameter definitions
+$contentCatalog=__CONTENT_CATALOG_NAME__
+
+$contentCV=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]),CatalogVersion.version[default=Staged])[default=$contentCatalog:Staged]
+$picture=media(code, $contentCV);
+$siteResource=jar:de.hybris.team5.initialdata.setup.InitialDataSystemSetup&/team5initialdata/import/contentCatalogs/$contentCatalog
+
+# Language
+$lang=en
+
+# Site Logo Component
+UPDATE SimpleBannerComponent;$contentCV[unique=true];uid[unique=true];$picture[lang=$lang]
+;;SiteLogoComponent;/images/theme/logo_hybris_b2b_responsive.svg
+
+# CMS Link Components
+UPDATE CMSLinkComponent;$contentCV[unique=true];uid[unique=true];linkName[lang=$lang]
+;;AngleGrindersCategoryLink;"Tesla Model S"
+ ;;MeasuringLayoutToolsCategoryLink;"Tesla Model 3+"
+ ;;PowerDrillsCategoryLink;"Tesla Model 3"
+ ;;SandersCategoryLink;"Tesla Model X"
+ ;;ScrewdriversCategoryLink;"Tesla Model Y"
+
+# Lightbox Banner for Mini Cart (banner is not localizable so we must create a separate banner per language)
+INSERT_UPDATE Media;$contentCV[unique=true];code[unique=true];@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator];mime[default='image/jpeg'];&imageRef;folder(qualifier)[default='images'];altText
+
+UPDATE SimpleBannerComponent;$contentCV[unique=true];uid[unique=true];$picture[lang=$lang]
+
+# CMS Mini Cart Component
+UPDATE MiniCartComponent;$contentCV[unique=true];uid[unique=true];name;title[lang=$lang]
+
+# CMS Tab Paragraph Components
+UPDATE CMSTabParagraphComponent;$contentCV[unique=true];uid[unique=true];title[lang=$lang];content[lang=$lang]
+
+# CMS Footer Component
+UPDATE FooterComponent;$contentCV[unique=true];uid[unique=true];notice[lang=$lang]
+
+# CMS Paragraph Components
+UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];content[lang=$lang]
+
+# CMS Product References Components
+UPDATE ProductReferencesComponent;$contentCV[unique=true];uid[unique=true];title[lang=$lang]
+
+# CMS PurchasedCategorySuggestionComponent Components
+UPDATE PurchasedCategorySuggestionComponent;$contentCV[unique=true];uid[unique=true];title[lang=$lang]
+
+# CMS CartSuggestion Components
+UPDATE CartSuggestionComponent;$contentCV[unique=true];uid[unique=true];title[lang=$lang]
+
+# Category Pages
+UPDATE CategoryPage;$contentCV[unique=true];uid[unique=true];title[lang=$lang]
+
+# CMS Navigation Nodes
+UPDATE CMSNavigationNode;$contentCV[unique=true];uid[unique=true];title[lang=$lang]
+ ;;AngleGrindersNavNode;"Tesla Model S"
+ ;;MeasuringLayoutToolsNavNode;"Tesla Model 3+"
+ ;;PowerDrillsNavNode;"Tesla Model 3"
+ ;;SandersNavNode;"Tesla Model X"
+ ;;ScrewdriversNavNode;"Tesla Model Y"
+ 
+
+# FAQ Page
+
+# CMS Paragraph Component (Contact information)
+UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];content[lang=en];
+
+
+# Terms and Conditions Page
+
+# CMS Paragraph Component (Contact information)
+UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];content[lang=en];
+
+
+# Homepage
+
+# Media Content
+INSERT_UPDATE Media;$contentCV[unique=true];code[unique=true];@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator];mime[default='image/jpeg'];&imageRef;folder(qualifier)[default='images'];altText
+;1200Wx1200H;/1200Wx1200H/3803058-3279.jpg;$siteResource/images/1200Wx1200H/3803058-3279.jpg		
+;300Wx300H;/300Wx300H/3803058-3279.jpg;$siteResource/images/300Wx300H/3803058-3279.jpg
+;96Wx96H;/96Wx96H/3803058-3279.jpg;$siteResource/images/96Wx96H/3803058-3279.jpg
+;515Wx515H;/515Wx515H/3803058-3279.jpg;$siteResource/images/515Wx515H/3803058-3279.jpg
+;65Wx65H;/65Wx65H/3803058-3279.jpg;$siteResource/images/65Wx65H/3803058-3279.jpg
+;30Wx30H;/30Wx30H/3803058-3279.jpg;$siteResource/images/30Wx30H/3803058-3279.jpg
+;1200Wx1200H;/1200Wx1200H/1128763-2470.jpg;$siteResource/images/1200Wx1200H/1128763-2470.jpg		
+;300Wx300H;/300Wx300H/1128763-2470.jpg;$siteResource/images/300Wx300H/1128763-2470.jpg
+;96Wx96H;/96Wx96H/1128763-2470.jpg;$siteResource/images/96Wx96H/1128763-2470.jpg
+;515Wx515H;/515Wx515H/1128763-2470.jpg;$siteResource/images/515Wx515H/1128763-2470.jpg
+;65Wx65H;/65Wx65H/1128763-2470.jpg;$siteResource/images/65Wx65H/1128763-2470.jpg
+;30Wx30H;/30Wx30H/1128763-2470.jpg;$siteResource/images/30Wx30H/1128763-2470.jpg
+;1200Wx1200H;/1200Wx1200H/1979039-277.jpg;$siteResource/images/1200Wx1200H/1979039-277.jpg		
+;300Wx300H;/300Wx300H/1979039-277jpg;$siteResource/images/300Wx300H/1979039-277.jpg
+;96Wx96H;/96Wx96H/1979039-277.jpg;$siteResource/images/96Wx96H/1979039-277.jpg
+;515Wx515H;/515Wx515H/1979039-277.jpg;$siteResource/images/515Wx515H/1979039-277.jpg
+;65Wx65H;/65Wx65H/1979039-277.jpg;$siteResource/images/65Wx65H/1979039-277.jpg
+;30Wx30H;/30Wx30H/1979039-277.jpg;$siteResource/images/30Wx30H/1979039-277.jpg
+;1200Wx1200H;/1200Wx1200H/693923-4863.jpg;$siteResource/images/1200Wx1200H/693923-4863.jpg		
+;300Wx300H;/300Wx300H/693923-4863.jpg;$siteResource/images/300Wx300H/693923-4863.jpg
+;96Wx96H;/96Wx96H/693923-4863.jpg;$siteResource/images/96Wx96H/693923-4863.jpg
+;515Wx515H;/515Wx515H/693923-4863.jpg;$siteResource/images/515Wx515H/693923-4863.jpg
+;65Wx65H;/65Wx65H/693923-4863.jpg;$siteResource/images/65Wx65H/693923-4863.jpg
+;30Wx30H;/30Wx30H/693923-4863.jpg;$siteResource/images/30Wx30H/693923-4863.jpg
+;1200Wx1200H;/1200Wx1200H/2222485-3114.jpg;$siteResource/images/1200Wx1200H/2222485-3114.jpg		
+;300Wx300H;/300Wx300H/2222485-3114.jpg;$siteResource/images/300Wx300H/2222485-3114.jpg
+;96Wx96H;/96Wx96H/2222485-3114.jpg;$siteResource/images/96Wx96H/2222485-3114.jpg
+;515Wx515H;/515Wx515H/2222485-3114.jpg;$siteResource/images/515Wx515H/2222485-3114.jpg
+;65Wx65H;/65Wx65H/2222485-3114.jpg;$siteResource/images/65Wx65H/2222485-3114.jpg
+;30Wx30H;/30Wx30H/2222485-3114.jpg;$siteResource/images/30Wx30H/2222485-3114.jpg
+;1200Wx1200H;/1200Wx1200H/2116266-4416.jpg;$siteResource/images/1200Wx1200H/2116266-4416.jpg		
+;300Wx300H;/300Wx300H/2116266-4416.jpg;$siteResource/images/300Wx300H/2116266-4416.jpg
+;96Wx96H;/96Wx96H/2116266-4416.jpg;$siteResource/images/96Wx96H/2116266-4416.jpg
+;515Wx515H;/515Wx515H/2116266-4416.jpg;$siteResource/images/515Wx515H/2116266-4416.jpg
+;65Wx65H;/65Wx65H/2116266-4416.jpg;$siteResource/images/65Wx65H/2116266-4416.jpg
+;30Wx30H;/30Wx30H/2116266-4416.jpg;$siteResource/images/30Wx30H/2116266-4416.jpg
+;1200Wx1200H;/1200Wx1200H/2116274-6708.jpg;$siteResource/images/1200Wx1200H/2116274-6708.jpg		
+;300Wx300H;/300Wx300H/2116274-6708.jpg;$siteResource/images/300Wx300H/2116274-6708.jpg
+;96Wx96H;/96Wx96H/2116274-6708jpg;$siteResource/images/96Wx96H/2116274-6708.jpg
+;515Wx515H;/515Wx515H/2116274-6708.jpg;$siteResource/images/515Wx515H/2116274-6708.jpg
+;65Wx65H;/65Wx65H/2116274-6708.jpg;$siteResource/images/65Wx65H/2116274-6708.jpg
+;30Wx30H;/30Wx30H/2116274-6708.jpg;$siteResource/images/30Wx30H/2116274-6708.jpg
+;1200Wx1200H;/1200Wx1200H/4567177-3349.jpg;$siteResource/images/1200Wx1200H/4567177-3349.jpg		
+;300Wx300H;/300Wx300H/4567177-3349.jpg;$siteResource/images/300Wx300H/4567177-3349.jpg
+;96Wx96H;/96Wx96H/4567177-3349.jpg;$siteResource/images/96Wx96H/4567177-3349.jpg
+;515Wx515H;/515Wx515H/4567177-3349.jpg;$siteResource/images/515Wx515H/4567177-3349.jpg
+;65Wx65H;/65Wx65H/4567177-3349.jpg;$siteResource/images/65Wx65H/4567177-3349.jpg
+;30Wx30H;/30Wx30H/4567177-3349.jpg;$siteResource/images/30Wx30H/4567177-3349.jpg
+;1200Wx1200H;/1200Wx1200H/4567175-5385.jpg;$siteResource/images/1200Wx1200H/4567175-5385.jpg		
+;300Wx300H;/300Wx300H/4567175-5385.jpg;$siteResource/images/300Wx300H/4567175-5385.jpg
+;96Wx96H;/96Wx96H/4567175-5385.jpg;$siteResource/images/96Wx96H/4567175-5385.jpg
+;515Wx515H;/515Wx515H/4567175-5385.jpg;$siteResource/images/515Wx515H/4567175-5385.jpg
+;65Wx65H;/65Wx65H/4567175-5385.jpg;$siteResource/images/65Wx65H/4567175-5385.jpg
+;30Wx30H;/30Wx30H/4567175-5385.jpg;$siteResource/images/30Wx30H/4567175-5385.jpg
+;1200Wx1200H;/1200Wx1200H/4567174-7640.jpg;$siteResource/images/1200Wx1200H/4567174-7640.jpg		
+;300Wx300H;/300Wx300H/4567174-7640.jpg;$siteResource/images/300Wx300H/4567174-7640.jpg
+;96Wx96H;/96Wx96H/4567174-7640.jpg;$siteResource/images/96Wx96H/4567174-7640.jpg
+;515Wx515H;/515Wx515H/4567174-7640.jpg;$siteResource/images/515Wx515H/4567174-7640.jpg
+;65Wx65H;/65Wx65H/4567174-7640.jpg;$siteResource/images/65Wx65H/4567174-7640.jpg
+;30Wx30H;/30Wx30H/4567174-7640.jpg;$siteResource/images/30Wx30H/4567174-7640.jpg
+;1200Wx1200H;/1200Wx1200H/4567173-3460.jpg;$siteResource/images/1200Wx1200H/4567173-3460.jpg		
+;300Wx300H;/300Wx300H/4567173-3460.jpg;$siteResource/images/300Wx300H/4567173-3460.jpg
+;96Wx96H;/96Wx96H/4567173-3460.jpg;$siteResource/images/96Wx96H/4567173-3460.jpg
+;515Wx515H;/515Wx515H/4567173-3460.jpg;$siteResource/images/515Wx515H/4567173-3460.jpg
+;65Wx65H;/65Wx65H/4567173-3460.jpg;$siteResource/images/65Wx65H/4567173-3460.jpg
+;30Wx30H;/30Wx30H/4567173-3460.jpg;$siteResource/images/30Wx30H/4567173-3460.jpg
+;1200Wx1200H;/1200Wx1200H/4567133-4298.jpg;$siteResource/images/1200Wx1200H/4567133-4298.jpg		
+;300Wx300H;/300Wx300H/4567133-4298.jpg;$siteResource/images/300Wx300H/4567133-4298.jpg
+;96Wx96H;/96Wx96H/4567133-4298.jpg;$siteResource/images/96Wx96H/4567133-4298.jpg
+;515Wx515H;/515Wx515H/4567133-4298.jpg;$siteResource/images/515Wx515H/4567133-4298.jpg
+;65Wx65H;/65Wx65H/4567133-4298.jpg;$siteResource/images/65Wx65H/4567133-4298.jpg
+;30Wx30H;/30Wx30H/4567133-4298.jpg;$siteResource/images/30Wx30H/4567133-4298.jpg
+;1200Wx1200H;/1200Wx1200H/3884600-1755.jpg;$siteResource/images/1200Wx1200H/3884600-1755.jpg		
+;300Wx300H;/300Wx300H/3884600-1755.jpg;$siteResource/images/300Wx300H/3884600-1755.jpg
+;96Wx96H;/96Wx96H/3884600-1755.jpg;$siteResource/images/96Wx96H/3884600-1755.jpg
+;515Wx515H;/515Wx515H/3884600-1755.jpg;$siteResource/images/515Wx515H/3884600-1755.jpg
+;65Wx65H;/65Wx65H/3884600-1755.jpg;$siteResource/images/65Wx65H/3884600-1755.jpg
+;30Wx30H;/30Wx30H/3884600-1755.jpg;$siteResource/images/30Wx30H/3884600-1755.jpg
+;1200Wx1200H;/1200Wx1200H/3887121-4911.jpg;$siteResource/images/1200Wx1200H/4567188-4725.jpg		
+;300Wx300H;/300Wx300H/4567188-4725.jpg;$siteResource/images/300Wx300H/4567188-4725.jpg
+;96Wx96H;/96Wx96H/4567188-4725.jpg;$siteResource/images/96Wx96H/4567188-4725.jpg
+;515Wx515H;/515Wx515H/4567188-4725.jpg;$siteResource/images/515Wx515H/4567188-4725.jpg
+;65Wx65H;/65Wx65H/4567188-4725.jpg;$siteResource/images/65Wx65H/4567188-4725.jpg
+;30Wx30H;/30Wx30H/4567188-4725.jpg;$siteResource/images/30Wx30H/4567188-4725.jpg
+;1200Wx1200H;/1200Wx1200H/3881339-1531.jpg;$siteResource/images/1200Wx1200H/3881339-1531.jpg		
+;300Wx300H;/300Wx300H/3881339-1531.jpg;$siteResource/images/300Wx300H/3881339-1531.jpg
+;96Wx96H;/96Wx96H/3881339-1531.jpg;$siteResource/images/96Wx96H/3881339-1531.jpg
+;515Wx515H;/515Wx515H/3881339-1531.jpg;$siteResource/images/515Wx515H/3881339-1531.jpg
+;65Wx65H;/65Wx65H/3881339-1531.jpg;$siteResource/images/65Wx65H/3881339-1531.jpg
+;30Wx30H;/30Wx30H/3881339-1531.jpg;$siteResource/images/30Wx30H/3881339-1531.jpg
+;1200Wx1200H;/1200Wx1200H/3881338-5875.jpg;$siteResource/images/1200Wx1200H/3881338-5875.jpg		
+;300Wx300H;/300Wx300H/3881338-5875.jpg;$siteResource/images/300Wx300H/3881338-5875.jpg
+;96Wx96H;/96Wx96H/3881338-5875.jpg;$siteResource/images/96Wx96H/3881338-5875.jpg
+;515Wx515H;/515Wx515H/3881338-5875.jpg;$siteResource/images/515Wx515H/3881338-5875.jpg
+;65Wx65H;/65Wx65H/3881338-5875.jpg;$siteResource/images/65Wx65H/3881338-5875.jpg
+;30Wx30H;/30Wx30H/3881338-5875.jpg;$siteResource/images/30Wx30H/3881338-5875.jpg
+;1200Wx1200H;/1200Wx1200H/3881074-7355.jpg;$siteResource/images/1200Wx1200H/3881074-7355.jpg		
+;300Wx300H;/300Wx300H/3881074-7355.jpg;$siteResource/images/300Wx300H/3881074-7355.jpg
+;96Wx96H;/96Wx96H/3881074-7355.jpg;$siteResource/images/96Wx96H/3881074-7355.jpg
+;515Wx515H;/515Wx515H/3881074-7355.jpg;$siteResource/images/515Wx515H/3881074-7355.jpg
+;65Wx65H;/65Wx65H/3881074-7355.jpg;$siteResource/images/65Wx65H/3881074-7355.jpg
+;30Wx30H;/30Wx30H/3881074-7355.jpg;$siteResource/images/30Wx30H/3881074-7355.jpg
+;1200Wx1200H;/1200Wx1200H/3881028-5896.jpg;$siteResource/images/1200Wx1200H/3881028-5896.jpg		
+;300Wx300H;/300Wx300H/3881028-5896.jpg;$siteResource/images/300Wx300H/3881028-5896.jpg
+;96Wx96H;/96Wx96H/3881028-5896.jpg;$siteResource/images/96Wx96H/3881028-5896.jpg
+;515Wx515H;/515Wx515H/3881028-5896.jpg;$siteResource/images/515Wx515H/3881028-5896.jpg
+;65Wx65H;/65Wx65H/3881028-5896.jpg;$siteResource/images/65Wx65H/3881028-5896.jpg
+;30Wx30H;/30Wx30H/3881028-5896.jpg;$siteResource/images/30Wx30H/3881028-5896.jpg
+;1200Wx1200H;/1200Wx1200H/3881076-4421.jpg;$siteResource/images/1200Wx1200H/3881076-4421.jpg		
+;300Wx300H;/300Wx300H/3881076-4421.jpg;$siteResource/images/300Wx300H/3881076-4421.jpg
+;96Wx96H;/96Wx96H/3881076-4421.jpg;$siteResource/images/96Wx96H/3881076-4421.jpg
+;515Wx515H;/515Wx515H/3881076-4421.jpg;$siteResource/images/515Wx515H/3881076-4421.jpg
+;65Wx65H;/65Wx65H/3881076-4421.jpg;$siteResource/images/65Wx65H/3881076-4421.jpg
+;30Wx30H;/30Wx30H/3881076-4421.jpg;$siteResource/images/30Wx30H/3881076-4421.jpg
+;1200Wx1200H;/1200Wx1200H/4598185-5054.jpg;$siteResource/images/1200Wx1200H/4598185-5054.jpg		
+;300Wx300H;/300Wx300H/4598185-5054.jpg;$siteResource/images/300Wx300H/4598185-5054.jpg
+;96Wx96H;/96Wx96H/4598185-5054.jpg;$siteResource/images/96Wx96H/4598185-5054.jpg
+;515Wx515H;/515Wx515H/4598185-5054.jpg;$siteResource/images/515Wx515H/4598185-5054.jpg
+;65Wx65H;/65Wx65H/4598185-5054.jpg;$siteResource/images/65Wx65H/4598185-5054.jpg
+;30Wx30H;/30Wx30H/4598185-5054.jpg;$siteResource/images/30Wx30H/4598185-5054.jpg
+;1200Wx1200H;/1200Wx1200H/3887120-4316.jpg;$siteResource/images/1200Wx1200H/3887120-4316.jpg		
+;300Wx300H;/300Wx300H/3887120-4316.jpg;$siteResource/images/300Wx300H/3887120-4316.jpg
+;96Wx96H;/96Wx96H/3887120-4316.jpg;$siteResource/images/96Wx96H/3887120-4316.jpg
+;515Wx515H;/515Wx515H/3887120-4316.jpg;$siteResource/images/515Wx515H/3887120-4316.jpg
+;65Wx65H;/65Wx65H/3887120-4316.jpg;$siteResource/images/65Wx65H/3887120-4316.jpg
+;30Wx30H;/30Wx30H/3887120-4316.jpg;$siteResource/images/30Wx30H/3887120-4316.jpg
+;1200Wx1200H;/1200Wx1200H/3887123-4821.jpg;$siteResource/images/1200Wx1200H/3887123-4821.jpg		
+;300Wx300H;/300Wx300H/3887123-4821.jpg;$siteResource/images/300Wx300H/3887123-4821.jpg
+;96Wx96H;/96Wx96H/3887123-4821.jpg;$siteResource/images/96Wx96H/3887123-4821.jpg
+;515Wx515H;/515Wx515H/3887123-4821.jpg;$siteResource/images/515Wx515H/3887123-4821.jpg
+;65Wx65H;/65Wx65H/3887123-4821.jpg;$siteResource/images/65Wx65H/3887123-4821.jpg
+;30Wx30H;/30Wx30H/3887123-4821.jpg;$siteResource/images/30Wx30H/3887123-4821.jpg
+;1200Wx1200H;/1200Wx1200H/3857732-3396.jpg;$siteResource/images/1200Wx1200H/3857732-3396.jpg		
+;300Wx300H;/300Wx300H/3857732-3396.jpg;$siteResource/images/300Wx300H/3857732-3396.jpg
+;96Wx96H;/96Wx96H/3857732-3396.jpg;$siteResource/images/96Wx96H/3857732-3396.jpg
+;515Wx515H;/515Wx515H/3857732-3396.jpg;$siteResource/images/515Wx515H/3857732-3396.jpg
+;65Wx65H;/65Wx65H/3857732-3396.jpg;$siteResource/images/65Wx65H/3857732-3396.jpg
+;30Wx30H;/30Wx30H/3857732-3396.jpg;$siteResource/images/30Wx30H/3857732-3396.jpg
+;1200Wx1200H;/1200Wx1200H/3857733-5694.jpg;$siteResource/images/1200Wx1200H/3857733-5694.jpg		
+;300Wx300H;/300Wx300H/3857733-5694.jpg;$siteResource/images/300Wx300H/3857733-5694.jpg
+;96Wx96H;/96Wx96H/3857733-5694.jpg;$siteResource/images/96Wx96H/3857733-5694.jpg
+;515Wx515H;/515Wx515H/3857733-5694.jpg;$siteResource/images/515Wx515H/3857733-5694.jpg
+;65Wx65H;/65Wx65H/3857733-5694.jpg;$siteResource/images/65Wx65H/3857733-5694.jpg
+;30Wx30H;/30Wx30H/3857733-5694.jpg;$siteResource/images/30Wx30H/3857733-5694.jpg
+;1200Wx1200H;/1200Wx1200H/3857735-395.jpg;$siteResource/images/1200Wx1200H/3857735-395.jpg		
+;300Wx300H;/300Wx300H/3857735-395.jpg;$siteResource/images/300Wx300H/3857735-395.jpg
+;96Wx96H;/96Wx96H/3857735-395.jpg;$siteResource/images/96Wx96H/3857735-395.jpg
+;515Wx515H;/515Wx515H/3857735-395.jpg;$siteResource/images/515Wx515H/3857735-395.jpg
+;65Wx65H;/65Wx65H/3857735-395.jpg;$siteResource/images/65Wx65H/3857735-395.jpg
+;30Wx30H;/30Wx30H/3857735-395.jpg;$siteResource/images/30Wx30H/3857735-395.jpg
+;1200Wx1200H;/1200Wx1200H/3880500-2832.jpg;$siteResource/images/1200Wx1200H/3880500-2832.jpg		
+;300Wx300H;/300Wx300H/3880500-2832.jpg;$siteResource/images/300Wx300H/3880500-2832.jpg
+;96Wx96H;/96Wx96H/3880500-2832.jpg;$siteResource/images/96Wx96H/3880500-2832.jpg
+;515Wx515H;/515Wx515H/3880500-2832.jpg;$siteResource/images/515Wx515H/3880500-2832.jpg
+;65Wx65H;/65Wx65H/3880500-2832.jpg;$siteResource/images/65Wx65H/3880500-2832.jpg
+;30Wx30H;/30Wx30H/3880500-2832.jpg;$siteResource/images/30Wx30H/3880500-2832.jpg
+;1200Wx1200H;/1200Wx1200H/3887121-4911.jpg;$siteResource/images/1200Wx1200H/3887121-4911.jpg		
+;300Wx300H;/300Wx300H/3887121-4911.jpg;$siteResource/images/300Wx300H/3887121-4911.jpg
+;96Wx96H;/96Wx96H/3887121-4911.jpg;$siteResource/images/96Wx96H/3887121-4911.jpg
+;515Wx515H;/515Wx515H/3887121-4911.jpg;$siteResource/images/515Wx515H/3887121-4911.jpg
+;65Wx65H;/65Wx65H/3887121-4911.jpg;$siteResource/images/65Wx65H/3887121-4911.jpg
+;30Wx30H;/30Wx30H/3887121-4911.jpg;$siteResource/images/30Wx30H/3887121-4911.jpg
+;1200Wx1200H;/1200Wx1200H/3887123-4821.jpg;$siteResource/images/1200Wx1200H/3887123-4821.jpg		
+;300Wx300H;/300Wx300H/3887123-4821.jpg;$siteResource/images/300Wx300H/3887123-4821.jpg
+;96Wx96H;/96Wx96H/3887123-4821.jpg;$siteResource/images/96Wx96H/3887123-4821.jpg
+;515Wx515H;/515Wx515H/3887123-4821.jpg;$siteResource/images/515Wx515H/3887123-4821.jpg
+;65Wx65H;/65Wx65H/3887123-4821.jpg;$siteResource/images/65Wx65H/3887123-4821.jpg
+;30Wx30H;/30Wx30H/3887123-4821.jpg;$siteResource/images/30Wx30H/3887123-4821.jpg
+;1200Wx1200H;/1200Wx1200H/3857732-3396.jpg;$siteResource/images/1200Wx1200H/3857732-3396.jpg		
+;300Wx300H;/300Wx300H/3857732-3396.jpg;$siteResource/images/300Wx300H/3857732-3396.jpg
+;96Wx96H;/96Wx96H/3857732-3396.jpg;$siteResource/images/96Wx96H/3857732-3396.jpg
+;515Wx515H;/515Wx515H/3857732-3396.jpg;$siteResource/images/515Wx515H/3857732-3396.jpg
+;65Wx65H;/65Wx65H/3857732-3396.jpg;$siteResource/images/65Wx65H/3857732-3396.jpg
+;30Wx30H;/30Wx30H/3857732-3396.jpg;$siteResource/images/30Wx30H/3857732-3396.jpg
+;1200Wx1200H;/1200Wx1200H/3857733-5694.jpg;$siteResource/images/1200Wx1200H/3857733-5694.jpg		
+;300Wx300H;/300Wx300H/3857733-5694.jpg;$siteResource/images/300Wx300H/3857733-5694.jpg
+;96Wx96H;/96Wx96H/3857733-5694.jpg;$siteResource/images/96Wx96H/3857733-5694.jpg
+;515Wx515H;/515Wx515H/3857733-5694.jpg;$siteResource/images/515Wx515H/3857733-5694.jpg
+;65Wx65H;/65Wx65H/3857733-5694.jpg;$siteResource/images/65Wx65H/3857733-5694.jpg
+;30Wx30H;/30Wx30H/3857733-5694.jpg;$siteResource/images/30Wx30H/3857733-5694.jpg
+;1200Wx1200H;/1200Wx1200H/3857735-395.jpg;$siteResource/images/1200Wx1200H/3857735-395.jpg		
+;300Wx300H;/300Wx300H/3857735-395.jpg;$siteResource/images/300Wx300H/3857735-395.jpg
+;96Wx96H;/96Wx96H/3857735-395.jpg;$siteResource/images/96Wx96H/3857735-395.jpg
+;515Wx515H;/515Wx515H/3857735-395.jpg;$siteResource/images/515Wx515H/3857735-395.jpg
+;65Wx65H;/65Wx65H/3857735-395.jpg;$siteResource/images/65Wx65H/3857735-395.jpg
+;30Wx30H;/30Wx30H/3857735-395.jpg;$siteResource/images/30Wx30H/3857735-395.jpg
+;1200Wx1200H;/1200Wx1200H/3880500-2832.jpg;$siteResource/images/1200Wx1200H/3880500-2832.jpg		
+;300Wx300H;/300Wx300H/3880500-2832.jpg;$siteResource/images/300Wx300H/3880500-2832.jpg
+;96Wx96H;/96Wx96H/3880500-2832.jpg;$siteResource/images/96Wx96H/3880500-2832.jpg
+;515Wx515H;/515Wx515H/3880500-2832.jpg;$siteResource/images/515Wx515H/3880500-2832.jpg
+;65Wx65H;/65Wx65H/3880500-2832.jpg;$siteResource/images/65Wx65H/3880500-2832.jpg
+;30Wx30H;/30Wx30H/3880500-2832.jpg;$siteResource/images/30Wx30H/3880500-2832.jpg
+
+
+
+
+# CMS Banner Components
+UPDATE Media;$contentCV[unique=true];code[unique=true];@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator];mime[default='image/jpeg'];altText;&imageRef
+;widescreen;Powertools_1400x480_BigSplash_EN_01_1400W.jpg;$siteResource/images/banners/homepage/responsive/Powertools_1400x480_BigSplash_EN_01_1400W.jpg;Powertools_1400x480_BigSplash_EN_01_1400W.jpg;"Innovative And Powerfull";
+;widescreen;Powertools_1400x70_Brands_EN_01_1400W.jpg;$siteResource/images/banners/homepage/responsive/Powertools_1400x70_Brands_EN_01_1400W.jpg;Powertools_1400x70_Brands_EN_01_1400W.jpg;" Model 3 |  Model Y | Model  X  | Model S";
+
+UPDATE SimpleBannerComponent;$contentCV[unique=true];uid[unique=true];$picture[lang=$lang]
+
+UPDATE BannerComponent;$contentCV[unique=true];uid[unique=true];headline[lang=$lang];$picture[lang=$lang];content[lang=$lang]
+
+UPDATE ProductCarouselComponent;$contentCV[unique=true];uid[unique=true];title[lang=$lang]
+
+
+# Camera Accessories and Supplies Category Landing Page
+
+UPDATE CategoryPage;$contentCV[unique=true];uid[unique=true];title[lang=$lang]
+
+INSERT_UPDATE Media;$contentCV[unique=true];code[unique=true];@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator];mime[default='image/jpeg'];folder(qualifier)[default='images'];altText
+
+UPDATE CategoryFeatureComponent;$contentCV[unique=true];uid[unique=true];title[lang=$lang];$picture[lang=$lang];description[lang=$lang]
+
+UPDATE SimpleBannerComponent;$contentCV[unique=true];uid[unique=true];$picture[lang=$lang]
+
+# Search Results Page
+
+# Media Content
+INSERT_UPDATE Media;$contentCV[unique=true];code[unique=true];@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator];mime[default='image/jpeg'];folder(qualifier)[default='images'];altText
+
+UPDATE SimpleBannerComponent;$contentCV[unique=true];uid[unique=true];$picture[lang=$lang]
+
+UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];content[lang=$lang]
+
+# Cart Page
+
+# Media Content
+INSERT_UPDATE Media;$contentCV[unique=true];code[unique=true];@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator];mime[default='image/jpeg'];folder(qualifier)[default='images'];altText
+
+UPDATE SimpleBannerComponent;$contentCV[unique=true];uid[unique=true];$picture[lang=$lang]
+
+UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];content[lang=$lang]
+
+
