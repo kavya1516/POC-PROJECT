@@ -1,0 +1,8 @@
+YEXTNAME_TOKEN=team5storefront
+YMODULE_TOKEN=team5
+YMODULE_PACKAGE_ROOT=storefront
+YMODULE_CLASS_PREFIX=Storefront
+YPACKAGE_TOKEN=de.hybris.mymodule.team5storefront
+YMANAGER_TOKEN=team5StorefrontManager
+YCLASSPREFIX_TOKEN=team5Storefront
+YGENERATED_TOKEN=Generated

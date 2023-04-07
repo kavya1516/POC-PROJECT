@@ -1,0 +1,163 @@
+# -----------------------------------------------------------------------
+# Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
+# -----------------------------------------------------------------------
+# ImpEx for Importing CMS Content
+# English Localisation
+
+# Macros / Replacement Parameter definitions
+$contentCatalog=teslaContentCatalog
+
+$contentCV=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]),CatalogVersion.version[default=Staged])[default=$contentCatalog:Staged]
+$picture=media(code, $contentCV);
+$siteResource=jar:de.hybris.team5.initialdata.setup.InitialDataSystemSetup&/team5initialdata/import/contentCatalogs/$contentCatalog
+
+# Language
+$lang=en
+
+# Site Logo Component
+UPDATE SimpleBannerComponent;$contentCV[unique=true];uid[unique=true];$picture[lang=$lang]
+;;SiteLogoComponent;/images/theme/logo_hybris_b2b_responsive.jpg
+
+# CMS Link Components
+UPDATE CMSLinkComponent;$contentCV[unique=true];uid[unique=true];linkName[lang=$lang]
+ ;;AngleGrindersCategoryLink;"Model 3"
+ ;;MeasuringLayoutToolsCategoryLink;"Model Y"
+ ;;PowerDrillsCategoryLink;"Model S"
+ ;;SandersCategoryLink;"Charging"
+ ;;ScrewdriversCategoryLink;"Model X"
+
+# Lightbox Banner for Mini Cart (banner is not localizable so we must create a separate banner per language)
+INSERT_UPDATE Media;$contentCV[unique=true];code[unique=true];@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator];mime[default='image/jpeg'];&imageRef;folder(qualifier)[default='images'];altText
+
+UPDATE SimpleBannerComponent;$contentCV[unique=true];uid[unique=true];$picture[lang=$lang]
+
+# CMS Mini Cart Component
+UPDATE MiniCartComponent;$contentCV[unique=true];uid[unique=true];name;title[lang=$lang]
+
+# CMS Tab Paragraph Components
+UPDATE CMSTabParagraphComponent;$contentCV[unique=true];uid[unique=true];title[lang=$lang];content[lang=$lang]
+
+# CMS Footer Component
+UPDATE FooterComponent;$contentCV[unique=true];uid[unique=true];notice[lang=$lang]
+
+# CMS Paragraph Components
+UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];content[lang=$lang]
+
+# CMS Product References Components
+UPDATE ProductReferencesComponent;$contentCV[unique=true];uid[unique=true];title[lang=$lang]
+
+# CMS PurchasedCategorySuggestionComponent Components
+UPDATE PurchasedCategorySuggestionComponent;$contentCV[unique=true];uid[unique=true];title[lang=$lang]
+
+# CMS CartSuggestion Components
+UPDATE CartSuggestionComponent;$contentCV[unique=true];uid[unique=true];title[lang=$lang]
+
+# Category Pages
+UPDATE CategoryPage;$contentCV[unique=true];uid[unique=true];title[lang=$lang]
+
+# CMS Navigation Nodes
+UPDATE CMSNavigationNode;$contentCV[unique=true];uid[unique=true];title[lang=$lang]
+ ;;AngleGrindersNavNode;"Model 3"
+ ;;MeasuringLayoutToolsNavNode;"Model Y"
+ ;;PowerDrillsNavNode;"Model S"
+ ;;SandersNavNode;"Charging"
+ ;;ScrewdriversNavNode;"Model X"
+
+# FAQ Page
+
+# CMS Paragraph Component (Contact information)
+UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];content[lang=en];
+
+
+# Terms and Conditions Page
+
+# CMS Paragraph Component (Contact information)
+UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];content[lang=en];
+
+
+# Homepage
+
+# Media Content
+INSERT_UPDATE Media;$contentCV[unique=true];code[unique=true];@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator];mime[default='image/jpeg'];&imageRef;folder(qualifier)[default='images'];altText
+ 
+
+# CMS Banner Components
+UPDATE Media;$contentCV[unique=true];code[unique=true];@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator];mime[default='image/jpeg'];altText;&imageRef
+
+UPDATE SimpleBannerComponent;$contentCV[unique=true];uid[unique=true];$picture[lang=$lang]
+
+UPDATE BannerComponent;$contentCV[unique=true];uid[unique=true];headline[lang=$lang];$picture[lang=$lang];content[lang=$lang]
+
+UPDATE ProductCarouselComponent;$contentCV[unique=true];uid[unique=true];title[lang=$lang]
+
+
+# Camera Accessories and Supplies Category Landing Page
+
+UPDATE CategoryPage;$contentCV[unique=true];uid[unique=true];title[lang=$lang]
+
+INSERT_UPDATE Media;$contentCV[unique=true];code[unique=true];@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator];mime[default='image/jpeg'];folder(qualifier)[default='images'];altText
+
+UPDATE CategoryFeatureComponent;$contentCV[unique=true];uid[unique=true];title[lang=$lang];$picture[lang=$lang];description[lang=$lang]
+
+UPDATE SimpleBannerComponent;$contentCV[unique=true];uid[unique=true];$picture[lang=$lang]
+
+# Search Results Page
+
+# Media Content
+INSERT_UPDATE Media;$contentCV[unique=true];code[unique=true];@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator];mime[default='image/jpeg'];folder(qualifier)[default='images'];altText
+
+UPDATE SimpleBannerComponent;$contentCV[unique=true];uid[unique=true];$picture[lang=$lang]
+
+UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];content[lang=$lang]
+
+# Cart Page
+
+# Media Content
+INSERT_UPDATE Media;$contentCV[unique=true];code[unique=true];@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator];mime[default='image/jpeg'];folder(qualifier)[default='images'];altText
+[forceWrite=true];realfilename;altText;mime[default='image/jpeg'];$contentCV[unique=true];folder(qualifier)[default=images];
+  ;widescreen;Powertools_1400x480_BigSplash_EN_01_1400W.jpg;$siteResource/images/banners/homepage/responsive/Powertools_1400x480_BigSplash_EN_01_1400W.jpg;Powertools_1400x480_BigSplash_EN_01_1400W.jpg;"The Most Powerful Tools in their Price Range";
+  ;widescreen;Powertools_1400x70_Brands_EN_01_1400W.jpg;$siteResource/images/banners/homepage/responsive/Powertools_1400x70_Brands_EN_01_1400W.jpg;Powertools_1400x70_Brands_EN_01_1400W.jpg;
+  ;mobile;Powertools_160x139_24Service_EN_01_160W.jpg;$siteResource/images/banners/homepage/responsive/Powertools_160x139_24Service_EN_01_160W.jpg;Powertools_160x139_24Service_EN_01_160W.jpg;"24/7 - Great Service After You Buy";
+  ;mobile;Powertools_160x139_25Deal_EN_01_160W.jpg;$siteResource/images/banners/homepage/responsive/Powertools_160x139_25Deal_EN_01_160W.jpg;Powertools_160x139_25Deal_EN_01_160W.jpg;"25% Great Prices and Great Deals";
+  ;mobile;Powertools_160x139_30Day_EN_01_160W.jpg;$siteResource/images/banners/homepage/responsive/Powertools_160x139_30Day_EN_01_160W.jpg;Powertools_160x139_30Day_EN_01_160W.jpg;"30 Day - Shop with Confidence";
+  ;mobile;Powertools_160x139_6pm_EN_01_160W.jpg;$siteResource/images/banners/homepage/responsive/Powertools_160x139_6pm_EN_01_160W.jpg;Powertools_160x139_6pm_EN_01_160W.jpg;"6pm - Order by 6pm for Same Day Shipping";
+  ;desktop;Powertools_240x200_24Service_EN_01_240W.jpg;$siteResource/images/banners/homepage/responsive/Powertools_240x200_24Service_EN_01_240W.jpg;Powertools_240x200_24Service_EN_01_240W.jpg;"24/7 - Great Service After You Buy";
+  ;desktop;Powertools_240x200_25Deal_EN_01_240W.jpg;$siteResource/images/banners/homepage/responsive/Powertools_240x200_25Deal_EN_01_240W.jpg;Powertools_240x200_25Deal_EN_01_240W.jpg;"25% Great Prices and Great Deals";
+  ;desktop;Powertools_240x200_30Day_EN_01_240W.jpg;$siteResource/images/banners/homepage/responsive/Powertools_240x200_30Day_EN_01_240W.jpg;Powertools_240x200_30Day_EN_01_240W.jpg;"30 Day - Shop with Confidence";
+  ;desktop;Powertools_240x200_6pm_EN_01_240W.jpg;$siteResource/images/banners/homepage/responsive/Powertools_240x200_6pm_EN_01_240W.jpg;Powertools_240x200_6pm_EN_01_240W.jpg;"6pm - Order by 6pm for Same Day Shipping";
+  ;desktop;Powertools_240x200_AngleGrinders_EN_01_240W.jpg;$siteResource/images/banners/homepage/responsive/Powertools_240x200_AngleGrinders_EN_01_240W.jpg;Powertools_240x200_AngleGrinders_EN_01_240W.jpg;"Angle Grinders";
+  ;desktop;Powertools_240x200_PowerDrills_EN_01_240W.jpg;$siteResource/images/banners/homepage/responsive/Powertools_240x200_PowerDrills_EN_01_240W.jpg;Powertools_240x200_PowerDrills_EN_01_240W.jpg;"Power Drills";
+  ;desktop;Powertools_240x200_Sanders_EN_01_240W.jpg;$siteResource/images/banners/homepage/responsive/Powertools_240x200_Sanders_EN_01_240W.jpg;Powertools_240x200_Sanders_EN_01_240W.jpg;"Sanders";
+  ;desktop;Powertools_240x200_Screwdrivers_EN_01_240W.jpg;$siteResource/images/banners/homepage/responsive/Powertools_240x200_Screwdrivers_EN_01_240W.jpg;Powertools_240x200_Screwdrivers_EN_01_240W.jpg;"Screwdrivers";
+  ;mobile;Powertools_320x100_Brands_EN_01_320W.jpg;$siteResource/images/banners/homepage/responsive/Powertools_320x100_Brands_EN_01_320W.jpg;Powertools_320x100_Brands_EN_01_320W.jpg;
+  ;mobile;Powertools_320x260_AngleGrinders_EN_01_320W.jpg;$siteResource/images/banners/homepage/responsive/Powertools_320x260_AngleGrinders_EN_01_320W.jpg;Powertools_320x260_AngleGrinders_EN_01_320W.jpg;"Angle Grinders";
+  ;mobile;Powertools_320x260_PowerDrills_EN_01_320W.jpg;$siteResource/images/banners/homepage/responsive/Powertools_320x260_PowerDrills_EN_01_320W.jpg;Powertools_320x260_PowerDrills_EN_01_320W.jpg;"Power Drills";
+  ;mobile;Powertools_320x260_Sanders_EN_01_320W.jpg;$siteResource/images/banners/homepage/responsive/Powertools_320x260_Sanders_EN_01_320W.jpg;Powertools_320x260_Sanders_EN_01_320W.jpg;"Sanders";
+  ;mobile;Powertools_320x260_Screwdrivers_EN_01_320W.jpg;$siteResource/images/banners/homepage/responsive/Powertools_320x260_Screwdrivers_EN_01_320W.jpg;Powertools_320x260_Screwdrivers_EN_01_320W.jpg;"Screwdrivers";
+  ;mobile;Powertools_320x300_BigSplash_EN_01_320W.jpg;$siteResource/images/banners/homepage/responsive/Powertools_320x300_BigSplash_EN_01_320W.jpg;Powertools_320x300_BigSplash_EN_01_320W.jpg;"The Most Powerful Tools in their Price Range";
+  ;widescreen;Powertools_350x280_24Service_EN_01_350W.jpg;$siteResource/images/banners/homepage/responsive/Powertools_350x280_24Service_EN_01_350W.jpg;Powertools_350x280_24Service_EN_01_350W.jpg;"24/7 - Great Service After You Buy";
+  ;widescreen;Powertools_350x280_25Deal_EN_01_350W.jpg;$siteResource/images/banners/homepage/responsive/Powertools_350x280_25Deal_EN_01_350W.jpg;Powertools_350x280_25Deal_EN_01_350W.jpg;"25% Great Prices and Great Deals";
+  ;widescreen;Powertools_350x280_30Day_EN_01_350W.jpg;$siteResource/images/banners/homepage/responsive/Powertools_350x280_30Day_EN_01_350W.jpg;Powertools_350x280_30Day_EN_01_350W.jpg;"30 Day - Shop with Confidence";
+  ;widescreen;Powertools_350x280_6pm_EN_01_350W.jpg;$siteResource/images/banners/homepage/responsive/Powertools_350x280_6pm_EN_01_350W.jpg;Powertools_350x280_6pm_EN_01_350W.jpg;"6pm - Order by 6pm for Same Day Shipping";
+  ;widescreen;Powertools_350x290_AngleGrinders_EN_01_350W.jpg;$siteResource/images/banners/homepage/responsive/Powertools_350x290_AngleGrinders_EN_01_350W.jpg;Powertools_350x290_AngleGrinders_EN_01_350W.jpg;"Angle Grinders";
+  ;widescreen;Powertools_350x290_PowerDrills_EN_01_350W.jpg;$siteResource/images/banners/homepage/responsive/Powertools_350x290_PowerDrills_EN_01_350W.jpg;Powertools_350x290_PowerDrills_EN_01_350W.jpg;"Power Drills";
+  ;widescreen;Powertools_350x290_Sanders_EN_01_350W.jpg;$siteResource/images/banners/homepage/responsive/Powertools_350x290_Sanders_EN_01_350W.jpg;Powertools_350x290_Sanders_EN_01_350W.jpg;"Sanders";
+  ;widescreen;Powertools_350x290_Screwdrivers_EN_01_350W.jpg;$siteResource/images/banners/homepage/responsive/Powertools_350x290_Screwdrivers_EN_01_350W.jpg;Powertools_350x290_Screwdrivers_EN_01_350W.jpg;"Screwdrivers";
+  ;tablet;Powertools_385x280_24Service_EN_01_385W.jpg;$siteResource/images/banners/homepage/responsive/Powertools_385x280_24Service_EN_01_385W.jpg;Powertools_385x280_24Service_EN_01_385W.jpg;"24/7 - Great Service After You Buy";
+  ;tablet;Powertools_385x280_25Deal_EN_01_385W.jpg;$siteResource/images/banners/homepage/responsive/Powertools_385x280_25Deal_EN_01_385W.jpg;Powertools_385x280_25Deal_EN_01_385W.jpg;"25% Great Prices and Great Deals";
+  ;tablet;Powertools_385x280_30Day_EN_01_385W.jpg;$siteResource/images/banners/homepage/responsive/Powertools_385x280_30Day_EN_01_385W.jpg;Powertools_385x280_30Day_EN_01_385W.jpg;"30 Day - Shop with Confidence";
+  ;tablet;Powertools_385x280_6pm_EN_01_385W.jpg;$siteResource/images/banners/homepage/responsive/Powertools_385x280_6pm_EN_01_385W.jpg;Powertools_385x280_6pm_EN_01_385W.jpg;"6pm - Order by 6pm for Same Day Shipping";
+  ;tablet;Powertools_385x290_AngleGrinders_EN_01_385W.jpg;$siteResource/images/banners/homepage/responsive/Powertools_385x290_AngleGrinders_EN_01_385W.jpg;Powertools_385x290_AngleGrinders_EN_01_385W.jpg;"Angle Grinders";
+  ;tablet;Powertools_385x290_PowerDrills_EN_01_385W.jpg;$siteResource/images/banners/homepage/responsive/Powertools_385x290_PowerDrills_EN_01_385W.jpg;Powertools_385x290_PowerDrills_EN_01_385W.jpg;"Power Drills";
+  ;tablet;Powertools_385x290_Sanders_EN_01_385W.jpg;$siteResource/images/banners/homepage/responsive/Powertools_385x290_Sanders_EN_01_385W.jpg;Powertools_385x290_Sanders_EN_01_385W.jpg;"Sanders";
+  ;tablet;Powertools_385x290_Screwdrivers_EN_01_385W.jpg;$siteResource/images/banners/homepage/responsive/Powertools_385x290_Screwdrivers_EN_01_385W.jpg;Powertools_385x290_Screwdrivers_EN_01_385W.jpg;"Screwdrivers";
+  ;tablet;Powertools_770x350_BigSplash_EN_01_770W.jpg;$siteResource/images/banners/homepage/responsive/Powertools_770x350_BigSplash_EN_01_770W.jpg;Powertools_770x350_BigSplash_EN_01_770W.jpg;
+  ;tablet;Powertools_770x70_Brands_EN_01_770W.jpg;$siteResource/images/banners/homepage/responsive/Powertools_770x70_Brands_EN_01_770W.jpg;Powertools_770x70_Brands_EN_01_770W.jpg;
+  ;desktop;Powertools_960x400_BigSplash_EN_01_960W.jpg;$siteResource/images/banners/homepage/responsive/Powertools_960x400_BigSplash_EN_01_960W.jpg;Powertools_960x400_BigSplash_EN_01_960W.jpg;
+  ;desktop;Powertools_960x70_Brands_EN_01_960W.jpg;$siteResource/images/banners/homepage/responsive/Powertools_960x70_Brands_EN_01_960W.jpg;Powertools_960x70_Brands_EN_01_960W.jpg;
+ 
+UPDATE SimpleBannerComponent;$contentCV[unique=true];uid[unique=true];$picture[lang=$lang]
+
+UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];content[lang=$lang]
+
+

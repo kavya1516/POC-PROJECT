@@ -1,0 +1,30 @@
+# -----------------------------------------------------------------------
+# Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
+# -----------------------------------------------------------------------
+# ImpEx for Importing Prices
+
+# Macros / Replacement Parameter definitions
+$productCatalog=__PRODUCT_CATALOG_NAME__
+
+$catalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default='$productCatalog:Staged']
+$prices=Europe1prices[translator=de.hybris.platform.europe1.jalo.impex.Europe1PricesTranslator]
+
+# Set product approval status to Approved only for those products that have prices.
+$approved=approvalstatus(code)[default='approved']
+
+UPDATE Product;code[unique=true];$prices;$approved;$catalogVersion;$taxGroup
+;2116279;1 pieces = 4000 USD N
+UPDATE Product;code[unique=true];$prices;$approved;$catalogVersion;$taxGroup
+;2116277;1 pieces =160 USD N
+UPDATE Product;code[unique=true];$prices;$approved;$catalogVersion;$taxGroup
+;3755205;1 pieces =95 USD N
+UPDATE Product;code[unique=true];$prices;$approved;$catalogVersion;$taxGroup
+;3755212;1 pieces =140 USD N
+UPDATE Product;code[unique=true];$prices;$approved;$catalogVersion;$taxGroup
+;2116282;1 pieces =30 USD N
+UPDATE Product;code[unique=true];$prices;$approved;$catalogVersion;$taxGroup
+;3881061;1 pieces =400 USD N
+UPDATE Product;code[unique=true];$prices;$approved;$catalogVersion;$taxGroup
+;3879434;1 pieces =45 USD N
+UPDATE Product;code[unique=true];$prices;$approved;$catalogVersion;$taxGroup
+;3881037;1 pieces =80 USD N

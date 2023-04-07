@@ -1,0 +1,24 @@
+# -----------------------------------------------------------------------
+# Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
+# -----------------------------------------------------------------------
+# ImpEx for Importing Products
+
+# Macros / Replacement Parameter definitions
+$productCatalog=__PRODUCT_CATALOG_NAME__
+$productCatalogName=__PRODUCT_CATALOG_FULL_NAME__
+
+$catalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
+$supercategories=supercategories(code, $catalogVersion)
+$baseProduct=baseProduct(code,$catalogVersion)
+$approved=approvalstatus(code)[default='check']
+
+# Insert Products
+INSERT_UPDATE Product;code[unique=true];$supercategories;manufacturerName;manufacturerAID;unit(code);ean;variantType(code);$catalogVersion;$approved
+                                   ; 2116279           ; Überturbine Wheel and Winter Tire Package  ; The Model 3 20” Überturbine Wheel and Winter Tire Package provides maximum safety, performance and control in all winter driving conditions. Improved traction, stability and braking efficiency in temperatures under 45°F.;		Überturbine Wheel and Winter Tire Package  ;;
+                                   ; 2116277           ; Glass Roof Sunshades									  ; Constructed of lightweight mesh fabric with a collapsible rigid frame, the Model 3 Glass Roof Sunshades block 66% of luminous transmittance without compromising rearward visibility. Easily removable, the sunshades are installed onto the interior of the glass roof with provided clips. When removed, the shades are collapsible and come with pouches for storage when not in use.;		Glass Roof Sunshades;;
+                                   ; 3755205           ; Tire Pressure Monitoring System  ; This product is the original Tire Pressure Monitoring System (TPMS) equipped with Tesla vehicles.;		Tire Pressure Monitoring System  ;;
+                                   ; 3755212           ; Phone Charging Cable  ;Enhance the cockpit ergonomics of your Model 3 with these phone charging cables for your center console's phone tray. No longer having to fiddle with loose charging cables, you will be able to blind holster your smartphone quickly and securely. ;		Phone Charging Cable  ;;
+                                   ;2116282			   ; Center Console Trays		;The Model 3/Y Center Console Trays help you stay organized with two flocked bins for your center console. The rear tray is a great size for larger items while the front tray is divided into two sections. ;		Center Console Trays  ;;
+                                   ; 3881061		   ; Roof Rack			   ;The Model 3 Roof Rack was designed and engineered from the ground up for maximum aerodynamic efficiency, minimal interior noise and impact to range. The ultra-sleek attachment mechanism makes for easy installation at home while blending in seamlessly.The aluminum cross bars on the roof rack feature T-slots to seamlessly mount compatible attachments such as ski racks, bike racks and cargo boxes ;		Roof Rack  ;;
+                                   ; 3879434		   ; USB Drive 128 GB	   ;Store your Sentry Mode and Dashcam footage with the USB Drive - 128 GB. Protect against theft, break-ins and threats when your car is left unattended with up to 128 GB of video storage capacity. Insert the pre-formatted USB Drive into the USB-A port inside the center console or the rear of the glove box before enabling Sentry Mode for a unique layer of safety and security you can take anywhere. ;		USB Drive 128 GB  ;;
+                                   ; 3879434		   ; Rear Liftgate Sunshade	    ;Constructed of lightweight mesh fabric with a collapsible rigid frame, the rear sunshade blocks 66% of luminous transmittance without compromising rearward visibility. Easily removable, the sunshade is installed onto the interior of the rear hatch window. When removed, the shade collapses and stores in a 16 inch (40.6 cm) diameter pouch. ;		Rear Liftgate Sunshade  ;;
